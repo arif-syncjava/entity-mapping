@@ -1,4 +1,4 @@
-package com.arifsyncjava.entitymapping.customer.entity;
+package com.arifsyncjava.entitymapping.entity;
 
 import jakarta.persistence.*;
 

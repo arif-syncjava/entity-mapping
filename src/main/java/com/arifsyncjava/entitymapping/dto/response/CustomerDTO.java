@@ -1,7 +1,7 @@
-package com.arifsyncjava.entitymapping.customer.dto.response;
+package com.arifsyncjava.entitymapping.dto.response;
 
-import com.arifsyncjava.entitymapping.customer.entity.Address;
-import com.arifsyncjava.entitymapping.customer.entity.Customer;
+import com.arifsyncjava.entitymapping.entity.Address;
+import com.arifsyncjava.entitymapping.entity.Customer;
 
 public class CustomerDTO {
     private String username;

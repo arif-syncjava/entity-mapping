@@ -1,4 +1,4 @@
-package com.arifsyncjava.entitymapping.customer.dto.request;
+package com.arifsyncjava.entitymapping.dto.request;
 
 public class RegistrationForm {
     private String username;
@@ -6,7 +6,12 @@ public class RegistrationForm {
     private String city;
     private String cityZone;
 
-
+    public RegistrationForm(String username, String email, String city, String cityZone) {
+        this.username = username;
+        this.email = email;
+        this.city = city;
+        this.cityZone = cityZone;
+    }
 
     public String getUsername() {
         return username;
