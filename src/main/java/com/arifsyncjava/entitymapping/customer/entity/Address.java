@@ -16,7 +16,7 @@ public class Address {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String city;
-    private String zone;
+    private String cityZone;
 
 //    @JoinColumn (name = "customer_id")
 //    private Customer customer;
@@ -32,13 +32,11 @@ public class Address {
         this.city = city;
     }
 
-    public String getZone() {
-        return zone;
+    public String getCityZone() {
+        return cityZone;
     }
 
-    public void setZone(String zone) {
-        this.zone = zone;
+    public void setCityZone(String cityZone) {
+        this.cityZone = cityZone;
     }
-
-
 }

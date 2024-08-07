@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table (name = "customers")
@@ -19,15 +20,9 @@ public class Customer implements Serializable {
 
     @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn (name = "customer_id")
-    private List<Order> orders;
+    private Set<Order> orders;
 
-    public List<Order> getOrders() {
-        return orders;
-    }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
 
     public Address getAddress() {
         return address;
