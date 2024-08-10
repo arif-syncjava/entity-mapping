@@ -8,10 +8,10 @@ public class CustomerDTO {
     private String email;
     private AddressDTO addressDTO;
 
-    public CustomerDTO(Customer customer, AddressDTO addressDTO) {
+    public CustomerDTO(Customer customer) {
         this.username = customer.getUsername();
         this.email = customer.getEmail();
-        this.addressDTO =addressDTO;
+        this.addressDTO = new AddressDTO(customer.getAddress());
     }
 
     public String getUsername() {

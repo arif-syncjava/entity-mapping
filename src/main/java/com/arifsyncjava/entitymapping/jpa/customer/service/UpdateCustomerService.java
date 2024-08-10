@@ -2,7 +2,6 @@ package com.arifsyncjava.entitymapping.jpa.customer.service;
 
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.RegistrationForm;
-import com.arifsyncjava.entitymapping.dto.response.AddressDTO;
 import com.arifsyncjava.entitymapping.dto.response.CustomerDTO;
 import com.arifsyncjava.entitymapping.entity.Address;
 import com.arifsyncjava.entitymapping.entity.Customer;
@@ -34,6 +33,6 @@ public class UpdateCustomerService implements Command<RegistrationForm, Customer
         customer.setAddress(address);
         Customer savedCustomer = customerRepository.save(customer);
 
-        return ResponseEntity.ok(new CustomerDTO(savedCustomer,new AddressDTO(address)));
+        return ResponseEntity.ok(new CustomerDTO(savedCustomer));
     }
 }

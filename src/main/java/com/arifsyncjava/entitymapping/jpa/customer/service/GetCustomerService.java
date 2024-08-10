@@ -23,7 +23,7 @@ public class GetCustomerService implements Query<String, CustomerDTO> {
         Customer customer = customerRepository.findByEmail(email)
                 .orElseThrow(()-> new RuntimeException("not found"));
 
-        return ResponseEntity.ok(new CustomerDTO(customer,
-                new AddressDTO(customer.getAddress())));
+        return ResponseEntity.ok(new CustomerDTO(customer));
     }
+
 }

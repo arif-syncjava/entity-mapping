@@ -1,26 +1,64 @@
 package com.arifsyncjava.entitymapping.jpa.review.controller;
 
+import com.arifsyncjava.entitymapping.dto.request.CreateReviewBody;
+import com.arifsyncjava.entitymapping.dto.request.CreateReviewRequest;
+import com.arifsyncjava.entitymapping.dto.request.RegistrationForm;
+import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
 import com.arifsyncjava.entitymapping.dto.response.ProductListDTO;
-import com.arifsyncjava.entitymapping.jpa.review.service.GetProductsService;
+import com.arifsyncjava.entitymapping.jpa.review.service.*;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class ReviewController {
 
-    private final GetProductsService getProductsService;
+    private final GetAllProductService  getAllProductService;
+    private final GetReviewService getReviewService;
+    private final CreateReviewService createReviewService;
+    //private final UpdateReviewService updateReviewService;
+    private final DeleteReviewService deleteReviewService;
 
-    public ReviewController(GetProductsService getProductsService) {
-        this.getProductsService = getProductsService;
+    public ReviewController(GetAllProductService getAllProductService, GetReviewService getReviewService, CreateReviewService createReviewService,
+                            DeleteReviewService deleteReviewService) {
+        this.getAllProductService = getAllProductService;
+        this.getReviewService = getReviewService;
+        this.createReviewService = createReviewService;
+        //this.updateReviewService = updateReviewService;
+        this.deleteReviewService = deleteReviewService;
     }
 
-    @RequestMapping (path = "/product-list")
+
+    @GetMapping(path = "/product-list")
     public ResponseEntity<List<ProductListDTO>> readAll () {
-        return getProductsService.execute(null);
+        return getAllProductService.execute(null);
     }
+
+    @GetMapping (path = "/products/{id}")
+    public ResponseEntity<ProductDTO> read ( @PathVariable ("id") Long productId) {
+        return getReviewService.execute(productId);
+    }
+
+    @PostMapping (path = "/products/{id}" ,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductDTO> create (
+            @PathVariable ("id") Long id,
+            @RequestBody CreateReviewBody request) {
+           return createReviewService.execute(
+                   new CreateReviewRequest(id,request));
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

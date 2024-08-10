@@ -1,0 +1,1 @@
+-- This schema file execute manually via any database cli before run the application
