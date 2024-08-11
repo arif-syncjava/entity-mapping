@@ -2,16 +2,20 @@ package com.arifsyncjava.entitymapping.dto.response;
 
 import com.arifsyncjava.entitymapping.jpa.entity.Product;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Getter
+@Getter @Setter
 public class ProductDTO {
     private Long productId;
     private String name;
     private String model;
     private String price;
     private List<ReviewDTO> reviews ;
+
+    public ProductDTO() {
+    }
 
     public ProductDTO(Product product) {
         this.productId = product.getProductId();
