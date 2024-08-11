@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 public class CreateReviewRequest {
     private Long productId;
-    private CreateReviewBody reviewBody;
+    private ReviewBody reviewBody;
 
-    public CreateReviewRequest(Long productId, CreateReviewBody reviewBody) {
+    public CreateReviewRequest(Long productId, ReviewBody reviewBody) {
         this.productId = productId;
         this.reviewBody = reviewBody;
     }

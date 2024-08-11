@@ -1,12 +1,22 @@
 package com.arifsyncjava.entitymapping.dto.request;
 
-import com.arifsyncjava.entitymapping.entity.Review;
 import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+@Getter
 public class UpdateReviewRequest {
     private Long productId;
-    private Review review;
+    private Long reviewId;
+    private ReviewBody body;
+
+    public UpdateReviewRequest() {
+
+    }
+
+    public UpdateReviewRequest(Long productId, Long reviewId, ReviewBody body) {
+        this.productId = productId;
+        this.reviewId = reviewId;
+        this.body = body;
+    }
+
 
 }

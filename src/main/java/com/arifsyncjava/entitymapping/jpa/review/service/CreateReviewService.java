@@ -3,7 +3,6 @@ package com.arifsyncjava.entitymapping.jpa.review.service;
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.CreateReviewRequest;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
-import com.arifsyncjava.entitymapping.dto.response.ReviewDTO;
 import com.arifsyncjava.entitymapping.entity.Product;
 import com.arifsyncjava.entitymapping.entity.Review;
 import com.arifsyncjava.entitymapping.jpa.review.repository.ProductRepository;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class CreateReviewService implements Command<CreateReviewRequest, ProductDTO> {
@@ -39,13 +37,10 @@ public class CreateReviewService implements Command<CreateReviewRequest, Product
 
         Review savedReview = reviewRepository.save(review);
 
-
         List<Review> reviewList = product.getReviewList();
         reviewList.add(savedReview);
 
-
         Product savedProduct = productRepository.save(product);
-
 
         return ResponseEntity.ok(new ProductDTO(savedProduct));
 

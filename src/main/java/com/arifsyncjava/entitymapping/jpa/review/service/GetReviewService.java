@@ -3,14 +3,9 @@ package com.arifsyncjava.entitymapping.jpa.review.service;
 import com.arifsyncjava.entitymapping.Query;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
 import com.arifsyncjava.entitymapping.entity.Product;
-import com.arifsyncjava.entitymapping.entity.Review;
 import com.arifsyncjava.entitymapping.jpa.review.repository.ProductRepository;
-import com.arifsyncjava.entitymapping.jpa.review.repository.ReviewRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.List;
 
 @Service
 public class GetReviewService implements Query<Long,ProductDTO> {

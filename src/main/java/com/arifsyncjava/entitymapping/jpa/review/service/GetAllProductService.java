@@ -27,4 +27,5 @@ public class GetAllProductService implements Query<Void, List<ProductListDTO>> {
 
         return ResponseEntity.ok(productListDTOList);
     }
+
 }

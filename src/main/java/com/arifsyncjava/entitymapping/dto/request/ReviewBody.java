@@ -3,11 +3,11 @@ package com.arifsyncjava.entitymapping.dto.request;
 import lombok.Getter;
 
 @Getter
-public class CreateReviewBody {
+public class ReviewBody {
     private String content;
     private Double star;
 
-    public CreateReviewBody(String content, Double star) {
+    public ReviewBody(String content, Double star) {
         this.content = content;
         this.star = star;
     }

@@ -1,8 +1,8 @@
 package com.arifsyncjava.entitymapping.jpa.review.controller;
 
-import com.arifsyncjava.entitymapping.dto.request.CreateReviewBody;
+import com.arifsyncjava.entitymapping.dto.request.ReviewBody;
 import com.arifsyncjava.entitymapping.dto.request.CreateReviewRequest;
-import com.arifsyncjava.entitymapping.dto.request.RegistrationForm;
+import com.arifsyncjava.entitymapping.dto.request.UpdateReviewRequest;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
 import com.arifsyncjava.entitymapping.dto.response.ProductListDTO;
 import com.arifsyncjava.entitymapping.jpa.review.service.*;
@@ -18,15 +18,17 @@ public class ReviewController {
     private final GetAllProductService  getAllProductService;
     private final GetReviewService getReviewService;
     private final CreateReviewService createReviewService;
-    //private final UpdateReviewService updateReviewService;
+    private final UpdateReviewService updateReviewService;
     private final DeleteReviewService deleteReviewService;
 
-    public ReviewController(GetAllProductService getAllProductService, GetReviewService getReviewService, CreateReviewService createReviewService,
+    public ReviewController(GetAllProductService getAllProductService,
+                            GetReviewService getReviewService, CreateReviewService createReviewService,
+                            UpdateReviewService updateReviewService,
                             DeleteReviewService deleteReviewService) {
         this.getAllProductService = getAllProductService;
         this.getReviewService = getReviewService;
         this.createReviewService = createReviewService;
-        //this.updateReviewService = updateReviewService;
+        this.updateReviewService = updateReviewService;
         this.deleteReviewService = deleteReviewService;
     }
 
@@ -41,15 +43,21 @@ public class ReviewController {
         return getReviewService.execute(productId);
     }
 
-    @PostMapping (path = "/products/{id}" ,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ProductDTO> create (
-            @PathVariable ("id") Long id,
-            @RequestBody CreateReviewBody request) {
-           return createReviewService.execute(
-                   new CreateReviewRequest(id,request));
+    @PostMapping (path = "/products/{id}" )
+    public ResponseEntity<ProductDTO> create (@PathVariable ("id") Long id, @RequestBody ReviewBody request) {
+           return createReviewService.execute(new CreateReviewRequest(id,request));
     }
+
+    @PutMapping (path = "/products/{productId}/{reviewId}")
+    public ResponseEntity<ProductDTO> update (
+            @PathVariable Long productId,
+            @PathVariable Long reviewId,
+            @RequestBody ReviewBody body) {
+        return updateReviewService.execute(
+                new UpdateReviewRequest(productId,reviewId,body));
+    }
+
+
 
 
 
