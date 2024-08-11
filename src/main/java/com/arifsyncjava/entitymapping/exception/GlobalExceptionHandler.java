@@ -1,5 +1,6 @@
 package com.arifsyncjava.entitymapping.exception;
 
+import com.arifsyncjava.entitymapping.exceptions.InvalidArgumentException;
 import com.arifsyncjava.entitymapping.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,15 @@ public class GlobalExceptionHandler {
             ResourceNotFoundException exception) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(new ApiError(exception.getStatus(),
+                        exception.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidArgumentException.class)
+    public ResponseEntity<ApiError> handleResourceNotFoundException (
+            InvalidArgumentException exception) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(new ApiError(exception.getStatus(),
                         exception.getMessage()));
     }

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Entity
 @Table (name = "customers")
 @Getter @Setter
@@ -18,10 +16,6 @@ public class Customer {
     @OneToOne (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn (name = "address_id")
     private Address address;
-
-    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn (name = "customer_id")
-    private Set<Order> orders;
 
 
 

@@ -1,12 +1,11 @@
 package com.arifsyncjava.entitymapping.jpa.review.controller;
 
-import com.arifsyncjava.entitymapping.dto.request.ReviewBody;
-import com.arifsyncjava.entitymapping.dto.request.CreateReviewRequest;
-import com.arifsyncjava.entitymapping.dto.request.UpdateReviewRequest;
+import com.arifsyncjava.entitymapping.dto.request.review.ReviewBody;
+import com.arifsyncjava.entitymapping.dto.request.review.CreateReviewRequest;
+import com.arifsyncjava.entitymapping.dto.request.review.UpdateReviewRequest;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
 import com.arifsyncjava.entitymapping.dto.response.ProductListDTO;
 import com.arifsyncjava.entitymapping.jpa.review.service.*;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

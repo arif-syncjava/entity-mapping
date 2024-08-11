@@ -1,4 +1,4 @@
-package com.arifsyncjava.entitymapping.dto.request;
+package com.arifsyncjava.entitymapping.dto.request.review;
 
 import lombok.Getter;
 

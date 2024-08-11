@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.jpa.customer.controller;
 
-import com.arifsyncjava.entitymapping.dto.request.RegistrationForm;
+import com.arifsyncjava.entitymapping.dto.request.customer.RegistrationForm;
 import com.arifsyncjava.entitymapping.dto.response.CustomerDTO;
 import com.arifsyncjava.entitymapping.jpa.customer.service.CreateCustomerService;
 import com.arifsyncjava.entitymapping.jpa.customer.service.DeleteCustomerService;
