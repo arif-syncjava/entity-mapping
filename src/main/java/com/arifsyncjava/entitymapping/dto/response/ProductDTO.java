@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.dto.response;
 
-import com.arifsyncjava.entitymapping.entity.Product;
+import com.arifsyncjava.entitymapping.jpa.entity.Product;
 import lombok.Getter;
 
 import java.util.List;

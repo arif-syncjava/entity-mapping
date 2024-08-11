@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.jpa.review.repository;
 
-import com.arifsyncjava.entitymapping.entity.Review;
+import com.arifsyncjava.entitymapping.jpa.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

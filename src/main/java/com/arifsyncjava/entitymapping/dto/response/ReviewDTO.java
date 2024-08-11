@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.dto.response;
 
-import com.arifsyncjava.entitymapping.entity.Review;
+import com.arifsyncjava.entitymapping.jpa.entity.Review;
 import lombok.Getter;
 import lombok.Setter;
 

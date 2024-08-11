@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.jpa.customer.repository;
 
-import com.arifsyncjava.entitymapping.entity.Address;
+import com.arifsyncjava.entitymapping.jpa.entity.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

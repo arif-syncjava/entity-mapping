@@ -1,6 +1,6 @@
 package com.arifsyncjava.entitymapping.dto.response;
 
-import com.arifsyncjava.entitymapping.entity.Address;
+import com.arifsyncjava.entitymapping.jpa.entity.Address;
 
 public class AddressDTO {
     private String city;

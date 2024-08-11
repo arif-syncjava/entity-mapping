@@ -1,4 +1,4 @@
-package com.arifsyncjava.entitymapping.entity;
+package com.arifsyncjava.entitymapping.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -20,7 +20,7 @@ public class Product {
     private String model;
     private String price;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "product_id")
     private List<Review> reviewList;
 

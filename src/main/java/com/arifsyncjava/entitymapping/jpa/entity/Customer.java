@@ -1,4 +1,4 @@
-package com.arifsyncjava.entitymapping.entity;
+package com.arifsyncjava.entitymapping.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -2,7 +2,7 @@ package com.arifsyncjava.entitymapping.jpa.review.service;
 
 import com.arifsyncjava.entitymapping.Query;
 import com.arifsyncjava.entitymapping.dto.response.ProductListDTO;
-import com.arifsyncjava.entitymapping.entity.Product;
+import com.arifsyncjava.entitymapping.jpa.entity.Product;
 import com.arifsyncjava.entitymapping.jpa.review.repository.ProductRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

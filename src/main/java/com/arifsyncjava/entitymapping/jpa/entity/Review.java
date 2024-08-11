@@ -1,16 +1,16 @@
-package com.arifsyncjava.entitymapping.entity;
+package com.arifsyncjava.entitymapping.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table (name = "address")
+@Table (name = "reviews")
 @Getter @Setter
-public class Address {
+public class Review {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String city;
-    private String cityZone;
+    private String content;
+    private Double star;
 
 }

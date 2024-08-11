@@ -1,7 +1,7 @@
 package com.arifsyncjava.entitymapping.jpa.customer.service;
 
 import com.arifsyncjava.entitymapping.Command;
-import com.arifsyncjava.entitymapping.entity.Customer;
+import com.arifsyncjava.entitymapping.jpa.entity.Customer;
 import com.arifsyncjava.entitymapping.jpa.customer.repository.CustomerRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -2,10 +2,9 @@ package com.arifsyncjava.entitymapping.jpa.customer.service;
 
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.RegistrationForm;
-import com.arifsyncjava.entitymapping.dto.response.AddressDTO;
 import com.arifsyncjava.entitymapping.dto.response.CustomerDTO;
-import com.arifsyncjava.entitymapping.entity.Address;
-import com.arifsyncjava.entitymapping.entity.Customer;
+import com.arifsyncjava.entitymapping.jpa.entity.Address;
+import com.arifsyncjava.entitymapping.jpa.entity.Customer;
 import com.arifsyncjava.entitymapping.jpa.customer.repository.AddressRepository;
 import com.arifsyncjava.entitymapping.jpa.customer.repository.CustomerRepository;
 import org.springframework.http.ResponseEntity;
