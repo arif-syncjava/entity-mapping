@@ -1,12 +1,18 @@
 package com.arifsyncjava.entitymapping.dto.response;
 
 import com.arifsyncjava.entitymapping.jpa.entity.Product;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter @Setter
 public class ProductListDTO {
     private Long id;
     private String name;
     private String model;
     private String price;
+
+    public ProductListDTO() {
+    }
 
     public ProductListDTO(Product product) {
         this.id = product.getProductId();
@@ -15,19 +21,5 @@ public class ProductListDTO {
         this.price = product.getPrice();
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public String getPrice() {
-        return price;
-    }
 }

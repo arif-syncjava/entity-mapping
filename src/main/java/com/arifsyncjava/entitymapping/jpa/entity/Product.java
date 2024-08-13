@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table (name = "products")
+@Table (name = "products",schema = "customer")
 @Getter @Setter
 @EqualsAndHashCode
 public class Product {
