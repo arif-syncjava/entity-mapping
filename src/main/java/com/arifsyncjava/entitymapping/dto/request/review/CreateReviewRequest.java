@@ -8,6 +8,9 @@ public class CreateReviewRequest {
     private Long productId;
     private ReviewBody reviewBody;
 
+    public CreateReviewRequest() {
+    }
+
     public CreateReviewRequest(Long productId, ReviewBody reviewBody) {
         this.productId = productId;
         this.reviewBody = reviewBody;

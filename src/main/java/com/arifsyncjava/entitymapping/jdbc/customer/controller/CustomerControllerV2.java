@@ -41,6 +41,11 @@ public class CustomerControllerV2 {
         return updateCustomerServiceV2.execute(request);
     }
 
+    @DeleteMapping (path = "/{email}")
+    public ResponseEntity<Void> delete (@PathVariable ("email") String email) {
+        return deleteCustomerServiceV2.execute(email);
+    }
+
 
 
 

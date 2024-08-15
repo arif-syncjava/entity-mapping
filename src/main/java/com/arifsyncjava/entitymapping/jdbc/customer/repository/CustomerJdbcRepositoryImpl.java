@@ -80,19 +80,21 @@ public class CustomerJdbcRepositoryImpl implements CustomerJdbcRepository {
 
         try {
 
-            jdbc.sql("UPDATE customer.customers " +
-                            "SET username = : username , email = :email")
+            jdbc.sql("UPDATE customer.customers  " +
+                            "SET username = :username , email = :newEmail " +
+                            "WHERE email = :oldEmail")
                     .param("username", request.getUsername())
-                    .param("email", request.getEmail())
+                    .param("newEmail", request.getEmail())
+                    .param("oldEmail", request.getEmail())
                     .update();
 
             Long addressId = jdbc
-                    .sql("SELECT customers.address_id FROM customers WHERE email = :email " )
+                    .sql("SELECT customers.address_id FROM customer.customers WHERE email = :email " )
                     .param("email", request.getEmail())
                     .query(Long.class)
                     .single();
 
-            jdbc.sql("UPDATE address SET city = :city, city_zone = :cityZone WHERE id = :addressId")
+            jdbc.sql("UPDATE customer.address SET city = :city, city_zone = :cityZone WHERE id = :addressId")
                     .param("city", request.getCity())
                     .param("cityZone", request.getCityZone())
                     .param("addressId",addressId)
@@ -105,7 +107,8 @@ public class CustomerJdbcRepositoryImpl implements CustomerJdbcRepository {
                     .query(new CustomerDTORowMapper()).single();
 
         } catch (DataAccessException exception) {
-            throw new InvalidArgumentException(exception.getMessage());
+            throw new InvalidArgumentException(ErrorMessage
+                    .DATABASE_OPERATION_ERROR.getMessage());
         }
 
     }
@@ -119,18 +122,17 @@ public class CustomerJdbcRepositoryImpl implements CustomerJdbcRepository {
 
         try {
 
-
-            jdbc.sql("DELETE FROM customer.customers WHERE email = :email ")
-                    .param("email", email).update();
-
             Long addressId = jdbc
-                    .sql("SELECT customers.address_id FROM customers WHERE email = :email " )
-                    .param("email", email)
+                    .sql("SELECT customer.customers.address_id FROM customer.customers" +
+                            " WHERE email = :customerEmail " )
+                    .param("customerEmail", email)
                     .query(Long.class)
                     .single();
 
+
             jdbc.sql("DELETE FROM customer.address WHERE id = :addressId")
-                    .param("addressId",addressId).update();
+                    .param("addressId",addressId)
+                    .update();
 
 
         } catch (DataAccessException exception) {
