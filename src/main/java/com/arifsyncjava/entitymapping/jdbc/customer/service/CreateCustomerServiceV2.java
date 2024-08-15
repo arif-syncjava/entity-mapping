@@ -3,9 +3,7 @@ package com.arifsyncjava.entitymapping.jdbc.customer.service;
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.customer.RegistrationForm;
 import com.arifsyncjava.entitymapping.dto.response.CustomerDTO;
-import com.arifsyncjava.entitymapping.exception.ErrorMessage;
-import com.arifsyncjava.entitymapping.exceptions.ResourceNotFoundException;
-import com.arifsyncjava.entitymapping.jdbc.customer.repository.CustomerRepository;
+import com.arifsyncjava.entitymapping.jdbc.customer.repository.CustomerJdbcRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,17 +11,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateCustomerServiceV2 implements Command<RegistrationForm, CustomerDTO> {
 
-    private final CustomerRepository customerRepository;
+    private final CustomerJdbcRepository customerJdbcRepository;
 
-    public CreateCustomerServiceV2(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CreateCustomerServiceV2(CustomerJdbcRepository customerJdbcRepository) {
+        this.customerJdbcRepository = customerJdbcRepository;
     }
 
 
     @Override
     public ResponseEntity<CustomerDTO> execute(RegistrationForm request) {
 
-        CustomerDTO customerDTO = customerRepository.create(request);
+        CustomerDTO customerDTO = customerJdbcRepository.create(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

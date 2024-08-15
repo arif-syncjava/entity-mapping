@@ -9,7 +9,11 @@ public class UpdateReviewRequest {
     private ReviewBody body;
 
     public UpdateReviewRequest() {
+    }
 
+    public UpdateReviewRequest(Long reviewId, ReviewBody body) {
+        this.reviewId = reviewId;
+        this.body = body;
     }
 
     public UpdateReviewRequest(Long productId, Long reviewId, ReviewBody body) {

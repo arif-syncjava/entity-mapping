@@ -5,7 +5,6 @@ import com.arifsyncjava.entitymapping.dto.request.customer.RegistrationForm;
 import com.arifsyncjava.entitymapping.dto.response.CustomerDTO;
 import com.arifsyncjava.entitymapping.exception.ErrorMessage;
 import com.arifsyncjava.entitymapping.exceptions.InvalidArgumentException;
-import com.arifsyncjava.entitymapping.jpa.customer.repository.AddressRepository;
 import com.arifsyncjava.entitymapping.jpa.customer.repository.CustomerRepository;
 import com.arifsyncjava.entitymapping.jpa.entity.Address;
 import com.arifsyncjava.entitymapping.jpa.entity.Customer;
@@ -17,12 +16,9 @@ import org.springframework.stereotype.Service;
 public class CreateCustomerService implements Command<RegistrationForm, CustomerDTO> {
 
     private final CustomerRepository customerRepository;
-    private final AddressRepository addressRepository;
 
-    public CreateCustomerService(CustomerRepository customerRepository,
-                                 AddressRepository addressRepository) {
+    public CreateCustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.addressRepository = addressRepository;
     }
 
 
@@ -41,8 +37,9 @@ public class CreateCustomerService implements Command<RegistrationForm, Customer
         address.setCity(request.getCity());
         address.setCityZone(request.getCityZone());
 
-
         customer.setAddress(address);
+
+
 
         Customer savedCustomer = customerRepository.save(customer);
 

@@ -9,6 +9,9 @@ public class ReviewDTO {
     private String content;
     private Double star;
 
+    public ReviewDTO() {
+    }
+
     public ReviewDTO (Review review) {
         this.content = review.getContent();
         this.star = review.getStar();

@@ -16,11 +16,11 @@ import java.util.Optional;
 
 @Transactional
 @Repository
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerJdbcRepositoryImpl implements CustomerJdbcRepository {
 
     private final JdbcClient jdbc;
 
-    public CustomerRepositoryImpl(JdbcClient jdbc) {
+    public CustomerJdbcRepositoryImpl(JdbcClient jdbc) {
         this.jdbc = jdbc;
     }
 

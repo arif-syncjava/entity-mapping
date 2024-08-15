@@ -4,6 +4,7 @@ import com.arifsyncjava.entitymapping.jpa.entity.Product;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
@@ -12,7 +13,7 @@ public class ProductDTO {
     private String name;
     private String model;
     private String price;
-    private List<ReviewDTO> reviews ;
+    private List<ReviewDTO> reviews;
 
     public ProductDTO() {
     }
@@ -24,6 +25,10 @@ public class ProductDTO {
         this.price = product.getPrice();
         this.reviews =  product.getReviewList().stream()
                 .map(ReviewDTO::new).toList();
+    }
+
+    public void addReviewToProduct (ReviewDTO reviewDTO) {
+        reviews.add(reviewDTO);
     }
 
 
