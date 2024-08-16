@@ -35,31 +35,31 @@ public class UpdateReviewRepository implements JdbcRepository<UpdateReviewReques
         }
 
         try {
-            jdbc.sql("UPDATE customer.reviews" +
-                            "SET content = :content, star = :star WHERE id  = :reviewId ")
+            jdbc.sql("UPDATE customer.reviews SET content = :content, star = :star WHERE id  = :reviewId ")
                     .param("content", request.getBody().getContent())
                     .param("star",request.getBody().getStar())
                     .param("reviewId",request.getReviewId())
                     .update();
 
 
-        Long productPk = jdbc.sql("SELECT product_primary_key WHERE id = : id ")
-                .param("id", request.getReviewId())
+        Long productPk = jdbc.sql("SELECT product_primary_key FROM customer.reviews" +
+                        " WHERE id = :reviewId ")
+                .param("reviewId", request.getReviewId())
                 .query(Long.class)
                 .single();
 
-        ProductDTO productDTO = jdbc.sql("SELECT p.product_id , p.name, p.model, p.price" +
-                "WHERE id = :id")
+        ProductDTO productDTO = jdbc.sql("SELECT product_id , name, model, price " +
+                "FROM customer.products WHERE id = :id")
                 .param("id", productPk)
-                .query(ProductDTO.class).single();
+                .query(ProductDTO.class)
+                .single();
 
-        List<ReviewDTO> reviewDTOList = jdbc.sql("SELECT content,star FROM" +
-                "customer.reviews WHERE id = :id")
-                .param("id", request.getReviewId())
+        List<ReviewDTO> reviewDTOList = jdbc.sql("SELECT content,star FROM customer.reviews WHERE id = :reviewId")
+                .param("reviewId", request.getReviewId())
                 .query(ReviewDTO.class)
                 .list();
-        productDTO.setReviews(reviewDTOList);
 
+        productDTO.setReviews(reviewDTOList);
 
         return productDTO;
 
@@ -69,10 +69,11 @@ public class UpdateReviewRepository implements JdbcRepository<UpdateReviewReques
 
     }
 
-    private boolean reviewIdExist(Long reviewId) {
-        return jdbc.sql("SELECT EXISTS (SELECT 1 FROM customer.reviews WHERE id = :reviewId")
+    public boolean reviewIdExist(Long reviewId) {
+        return jdbc.sql("SELECT EXISTS (SELECT 1 FROM customer.reviews WHERE id = :reviewId)")
                 .param("reviewId", reviewId)
-                .query(Boolean.class).single();
+                .query(Boolean.class)
+                .single();
     }
 
 

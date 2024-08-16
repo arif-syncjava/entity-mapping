@@ -46,18 +46,16 @@ public class ReviewControllerV2 {
         return createReviewServiceV2.execute(new CreateReviewRequest(productId, request));
     }
 
-    @PutMapping (path = "/reviews/{reviewId}")
+    @PutMapping (path = "/jdbc/reviews/{reviewId}")
     public ResponseEntity<ProductDTO> update (
             @PathVariable ("reviewId") Long reviewId,
             @RequestBody ReviewBody body)  {
-
-        return updateReviewServiceV2.execute(
-                new UpdateReviewRequest(reviewId, body));
+        return updateReviewServiceV2.execute(new UpdateReviewRequest(reviewId, body));
 
 
     }
 
-    @DeleteMapping (path ="/review/{reviewId}")
+    @DeleteMapping (path ="/jdbc/reviews/{reviewId}")
     public ResponseEntity<Void> delete (@PathVariable Long reviewId) {
         return deleteReviewServiceV2.execute(reviewId);
     }

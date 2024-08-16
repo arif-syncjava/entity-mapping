@@ -23,13 +23,10 @@ public class ProductDTO {
         this.name = product.getName();
         this.model = product.getModel();
         this.price = product.getPrice();
-        this.reviews =  product.getReviewList().stream()
-                .map(ReviewDTO::new).toList();
+        this.reviews =  product.getReviewList()
+                .stream().map(ReviewDTO::new).toList();
     }
 
-    public void addReviewToProduct (ReviewDTO reviewDTO) {
-        reviews.add(reviewDTO);
-    }
 
 
 }

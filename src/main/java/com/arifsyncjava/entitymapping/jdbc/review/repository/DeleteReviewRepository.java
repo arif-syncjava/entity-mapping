@@ -27,7 +27,7 @@ public class DeleteReviewRepository implements JdbcRepository<Long, Optional<Voi
                     ErrorMessage.RESOURCE_NOT_FOUND.getMessage());
         }
 
-        jdbc.sql("DELETE FROM reviews WHERE id = reviewId")
+        jdbc.sql("DELETE FROM customer.reviews WHERE id = :reviewId")
                 .param("reviewId",reviewId)
                 .update();
 

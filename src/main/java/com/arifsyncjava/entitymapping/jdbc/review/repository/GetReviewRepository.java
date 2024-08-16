@@ -34,7 +34,8 @@ public class GetReviewRepository implements JdbcRepository<Long, ProductDTO> {
             Long productPk = jdbc.sql("SELECT id FROM customer.products" +
                             " WHERE product_id = :productId ")
                     .param("productId", productId)
-                    .query(Long.class).single();
+                    .query(Long.class)
+                    .single();
 
             List<ReviewDTO> reviewDTOList = jdbc.sql("SELECT content, star FROM customer.reviews WHERE product_primary_key = :productPk ")
                     .param("productPk", productPk)
@@ -61,7 +62,8 @@ public class GetReviewRepository implements JdbcRepository<Long, ProductDTO> {
         return jdbc.sql("SELECT EXISTS " +
                         "(SELECT 1 FROM customer.products WHERE product_id = :productId )")
                 .param("productId", productId)
-                .query(Boolean.class).single();
+                .query(Boolean.class)
+                .single();
     }
 
 
