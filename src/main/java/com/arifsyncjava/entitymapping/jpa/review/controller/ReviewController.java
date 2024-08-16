@@ -42,8 +42,10 @@ public class ReviewController {
         return getReviewService.execute(productId);
     }
 
-    @PostMapping (path = "/products/{id}" )
-    public ResponseEntity<ProductDTO> create (@PathVariable ("id") Long id, @RequestBody ReviewBody request) {
+    @PostMapping (path = "/products/{productId}" )
+    public ResponseEntity<ProductDTO> create (
+            @PathVariable ("productId") Long id,
+            @RequestBody ReviewBody request) {
            return createReviewService.execute(new CreateReviewRequest(id,request));
     }
 

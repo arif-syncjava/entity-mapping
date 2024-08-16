@@ -20,9 +20,9 @@ public class Product {
     private String model;
     private String price;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
+    @OneToMany (mappedBy = "product")
     private List<Review> reviewList;
+
 
 
 

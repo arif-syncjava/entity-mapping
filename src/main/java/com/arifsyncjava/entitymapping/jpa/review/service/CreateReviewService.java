@@ -36,10 +36,7 @@ public class CreateReviewService implements Command<CreateReviewRequest, Product
         Review review = new Review();
         review.setContent(request.getReviewBody().getContent());
         review.setStar(request.getReviewBody().getStar());
-
-
-        List<Review> reviewList = product.getReviewList();
-        reviewList.add(review);
+        review.setProduct(product);
 
         Product savedProduct = productRepository.save(product);
 

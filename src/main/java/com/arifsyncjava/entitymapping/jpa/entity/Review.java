@@ -12,5 +12,17 @@ public class Review {
     private Long id;
     private String content;
     private Double star;
+    @ManyToOne
+    @JoinColumn(name = "product_primary_key")
+    private Product product;
 
+
+    public Review() {
+    }
+
+    public Review(Long id, String content, Double star) {
+        this.id = id;
+        this.content = content;
+        this.star = star;
+    }
 }
