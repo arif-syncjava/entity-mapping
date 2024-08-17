@@ -26,7 +26,7 @@ public class GetReviewRepositoryTest {
 
     @Test
     public void GetReviewRepository_execute_ReturnSuccess () {
-        Long productId = 1289907L; // already saved in database
+        Long productId = 742412L; // already saved in database
         ProductDTO productDTO = getReviewRepository.execute(productId);
         Assertions.assertThat(productDTO).isNotNull();
     }

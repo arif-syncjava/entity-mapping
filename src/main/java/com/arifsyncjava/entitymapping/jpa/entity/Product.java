@@ -5,12 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table (name = "products",schema = "customer")
 @Getter @Setter
-@EqualsAndHashCode
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,9 @@ public class Product {
     private String model;
     private String price;
 
-    @OneToMany (mappedBy = "product")
-    private List<Review> reviewList;
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "product",fetch = FetchType.EAGER,
+            orphanRemoval = true)
+    private List<Review> reviewList = new ArrayList<>();
 
 
 

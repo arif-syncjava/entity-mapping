@@ -12,7 +12,7 @@ public class Review {
     private Long id;
     private String content;
     private Double star;
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "product_primary_key")
     private Product product;
 
@@ -25,4 +25,5 @@ public class Review {
         this.content = content;
         this.star = star;
     }
+
 }

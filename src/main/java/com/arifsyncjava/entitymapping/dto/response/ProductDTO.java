@@ -18,13 +18,12 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public ProductDTO(Product product) {
+    public ProductDTO(Product product, List<ReviewDTO> reviewDTOList) {
         this.productId = product.getProductId();
         this.name = product.getName();
         this.model = product.getModel();
         this.price = product.getPrice();
-        this.reviews =  product.getReviewList()
-                .stream().map(ReviewDTO::new).toList();
+        this.reviews = reviewDTOList;
     }
 
 

@@ -30,13 +30,13 @@ public class CreateReviewRepositoryTest {
     public void CreateReviewRepository_ReturnAProductDTO () {
         CreateReviewRequest request = new CreateReviewRequest();
         ReviewBody body = new ReviewBody("good", 4.0);
-        Long productId = 1289907L; // already saved in database
+        Long productId = 742412L; // already saved in database
         request.setProductId(productId);
         request.setReviewBody(body);
 
         ProductDTO productDTO = createReviewRepository.execute(request);
 
-        Assertions.assertThat(productDTO.getProductId()).isEqualTo(1289907L);
+        Assertions.assertThat(productDTO.getProductId()).isEqualTo(742412L);
 
 
 

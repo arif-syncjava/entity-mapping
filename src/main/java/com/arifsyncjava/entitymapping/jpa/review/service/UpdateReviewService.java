@@ -3,6 +3,7 @@ package com.arifsyncjava.entitymapping.jpa.review.service;
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.review.UpdateReviewRequest;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
+import com.arifsyncjava.entitymapping.dto.response.ReviewDTO;
 import com.arifsyncjava.entitymapping.exception.ErrorMessage;
 import com.arifsyncjava.entitymapping.exceptions.ResourceNotFoundException;
 import com.arifsyncjava.entitymapping.jpa.entity.Product;
@@ -11,6 +12,8 @@ import com.arifsyncjava.entitymapping.jpa.review.repository.ProductRepository;
 import com.arifsyncjava.entitymapping.jpa.review.repository.ReviewRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UpdateReviewService implements Command<UpdateReviewRequest, ProductDTO> {
@@ -44,7 +47,11 @@ public class UpdateReviewService implements Command<UpdateReviewRequest, Product
         Product updatedProduct =productRepository
                .findByProductId(request.getProductId()).get();
 
-        return ResponseEntity.ok(new ProductDTO(updatedProduct));
+        List<ReviewDTO> reviewDTOList  = updatedProduct.getReviewList()
+                .stream().map(ReviewDTO::new).toList();
+
+
+        return ResponseEntity.ok(new ProductDTO(updatedProduct, reviewDTOList));
 
     }
 

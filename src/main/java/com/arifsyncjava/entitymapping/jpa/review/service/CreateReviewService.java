@@ -3,6 +3,7 @@ package com.arifsyncjava.entitymapping.jpa.review.service;
 import com.arifsyncjava.entitymapping.Command;
 import com.arifsyncjava.entitymapping.dto.request.review.CreateReviewRequest;
 import com.arifsyncjava.entitymapping.dto.response.ProductDTO;
+import com.arifsyncjava.entitymapping.dto.response.ReviewDTO;
 import com.arifsyncjava.entitymapping.exception.ErrorMessage;
 import com.arifsyncjava.entitymapping.exceptions.ResourceNotFoundException;
 import com.arifsyncjava.entitymapping.jpa.entity.Product;
@@ -19,10 +20,12 @@ import java.util.List;
 public class CreateReviewService implements Command<CreateReviewRequest, ProductDTO> {
 
     private final ProductRepository productRepository;
+    private final ReviewRepository reviewRepository;
 
     public CreateReviewService(ProductRepository productRepository,
                                ReviewRepository reviewRepository) {
         this.productRepository = productRepository;
+        this.reviewRepository = reviewRepository;
     }
 
 
@@ -37,12 +40,18 @@ public class CreateReviewService implements Command<CreateReviewRequest, Product
         review.setContent(request.getReviewBody().getContent());
         review.setStar(request.getReviewBody().getStar());
         review.setProduct(product);
+        reviewRepository.save(review);
 
-        Product savedProduct = productRepository.save(product);
+        Product savedProduct = productRepository
+                .findByProductId(product.getProductId()).get();
+
+        List<ReviewDTO> reviewDTOList = savedProduct.getReviewList()
+                .stream().map(ReviewDTO::new).toList();
+
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(new ProductDTO(savedProduct));
+                .body(new ProductDTO(savedProduct, reviewDTOList));
 
     }
 
